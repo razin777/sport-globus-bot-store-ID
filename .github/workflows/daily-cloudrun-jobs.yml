@@ -23,27 +23,27 @@ jobs:
 
       - name: Job 2 - meme parsers (16:00)
         run: |
-          sleep 3600
+          sleep 1800
           gcloud run jobs execute job-meme-parsers --region=europe-west1
 
       - name: Job 3 - past matches (17:00)
         run: |
-          sleep 7200
+          sleep 1800
           gcloud run jobs execute job-past-matches --region=europe-west1
 
       - name: Job 4 - review past match video (18:00)
         run: |
-          sleep 10800
+          sleep 1800
           gcloud run jobs execute job-review-past-match-video --region=europe-west1
 
       - name: Job 5 - upcoming match review (19:00)
         run: |
-          sleep 14400
+          sleep 1800
           gcloud run jobs execute job-upcoming-match-review --region=europe-west1
 
       - name: Job 6 - upcoming matches (20:00)
         run: |
-          sleep 18000
+          sleep 1800
           gcloud run jobs execute job-upcoming-matches --region=europe-west1
 
       - name: Job 7 - x here we go (21:00)
