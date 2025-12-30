@@ -1,0 +1,52 @@
+name: Daily Cloud Run Jobs Test
+
+on:
+  schedule:
+    - cron: '0 5 * * *'  # Каждый день в 05:00 UTC → 07:00 по Киеву
+  workflow_dispatch:      # для ручного запуска
+
+jobs:
+  run_all_jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Authenticate GCP
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+        run: |
+          echo "$GCP_SA_KEY" > /tmp/key.json
+          gcloud auth activate-service-account --key-file=/tmp/key.json
+          gcloud config set project $GCP_PROJECT
+
+      - name: Job 1 - football news (07:00)
+        run: gcloud run jobs execute job-football-news --region=europe-west1
+
+      - name: Job 2 - meme parsers (08:00)
+        run: |
+          sleep 3600
+          gcloud run jobs execute job-meme-parsers --region=europe-west1
+
+      - name: Job 3 - past matches (09:00)
+        run: |
+          sleep 7200
+          gcloud run jobs execute job-past-matches --region=europe-west1
+
+      - name: Job 4 - review past match video (10:00)
+        run: |
+          sleep 10800
+          gcloud run jobs execute job-review-past-match-video --region=europe-west1
+
+      - name: Job 5 - upcoming match review (11:00)
+        run: |
+          sleep 14400
+          gcloud run jobs execute job-upcoming-match-review --region=europe-west1
+
+      - name: Job 6 - upcoming matches (12:00)
+        run: |
+          sleep 18000
+          gcloud run jobs execute job-upcoming-matches --region=europe-west1
+
+      - name: Job 7 - x here we go (13:00)
+        run: |
+          sleep 21600
+          gcloud run jobs execute job-x-here-we-go --region=europe-west1
