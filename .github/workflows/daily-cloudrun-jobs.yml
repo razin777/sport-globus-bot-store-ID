@@ -2,7 +2,7 @@ name: Daily Cloud Run Jobs Test
 
 on:
   schedule:
-    - cron: '0 13 * * *'  # 13:00 UTC → 15:00 по Киеву
+    - cron: '0 7 * * *'   # 07:00 UTC → 09:00 по Киеву
   workflow_dispatch:
 
 jobs:
