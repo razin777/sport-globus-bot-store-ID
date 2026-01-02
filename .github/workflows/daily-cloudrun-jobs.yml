@@ -48,5 +48,5 @@ jobs:
 
       - name: Job 7 - x here we go (21:00)
         run: |
-          sleep 21600
+          sleep 1800
           gcloud run jobs execute job-x-here-we-go --region=europe-west1
