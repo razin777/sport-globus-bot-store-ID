@@ -47,6 +47,7 @@ jobs:
           gcloud run jobs execute job-upcoming-matches --region=europe-west1
 
       - name: Job 7 - x here we go (21:00)
+        if: false
         run: |
           sleep 1800
           gcloud run jobs execute job-x-here-we-go --region=europe-west1
