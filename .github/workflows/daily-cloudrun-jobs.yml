@@ -27,6 +27,7 @@ jobs:
           gcloud run jobs execute job-meme-parsers --region=europe-west1
 
       - name: Job 3 - past matches (17:00)
+        if: false
         run: |
           sleep 1800
           gcloud run jobs execute job-past-matches --region=europe-west1
